@@ -1,22 +1,43 @@
-print("*" * 20)
+import random
+
+print("*" * 30)
 print("Bem vindo no jogo da Adivinhação")
-print("*" * 20)
+print("*" * 30)
 
-numeroSecreto = 10
-tentativas = 3
-rodada = 1
+# numeroSecreto = 10
+# numeroSecreto = round(random.random() * 100)
+numeroSecreto = random.randrange(1, 101)
+print(numeroSecreto)
+tentativas = 0
+# rodada = 1
 
-while (rodada <= tentativas):
+print("Defina o nível de dificuldade")
+print("(1) - Fácil (2) - Médio (3) - Difícil")
+nivel = int(input("Defina um nível? "))
+
+if (nivel == 1):
+    tentativas = 20
+elif (nivel == 2):
+    tentativas = 10
+else:
+    tentativas = 5
+# Se o número for inválido, vai considerar a dificuldade dificil
+
+
+for rodada in range (1, tentativas + 1):
+# while (rodada <= tentativas):
+
     # Chute sem conversão, ele considera STRING como padrão
     # chuteStg = int(input("Digite o seu número: "))
+
+    # String interpolation
+    # print("Tentativa {} de {}".format(rodada, tentativas))
+
     print(f'Tentativa {rodada} de {tentativas}')
-    chute = int(input("Digite o seu número: "))
+    chute = int(input("Valor inválido! Você deve digitar um número entre 1 e 100: "))
     print("Você digitou" , chute)
 
-    acertou = chute == numeroSecreto
-    maior = chute > numeroSecreto
-    menor = chute < numeroSecreto
-
+    # Primeira validação do jogo
     # if (numeroSecreto == chute):
     #     print("Você acertou!")
     # else:
@@ -24,6 +45,14 @@ while (rodada <= tentativas):
     #         print("Você errou! O seu chute foi maior que o número secreto")
     #     else:
     #         print("Você errou! O seu chute foi menor que o número secreto")
+
+    if(chute < 1 or chute > 100):
+        print("Digite um número entre 1 e 100: ")
+        continue
+
+    acertou = chute == numeroSecreto
+    maior = chute > numeroSecreto
+    menor = chute < numeroSecreto
 
     if (acertou):
         print("Você acertou!")
@@ -33,6 +62,8 @@ while (rodada <= tentativas):
             print("Você errou! O seu chute foi maior que o número secreto")
         elif(menor):
             print("Você errou! O seu chute foi menor que o número secreto")
-    rodada += 1
+
+    # Incremento While
+    # rodada += 1
 
 print("Fim do jogo")    

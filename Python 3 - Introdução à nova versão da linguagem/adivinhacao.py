@@ -72,4 +72,7 @@ def jogar():
         # Incremento While
         # rodada += 1
 
-    print("Fim do jogo")    
+    print("Fim do jogo")
+
+if(__name__ == "__main__"):
+    jogar()
